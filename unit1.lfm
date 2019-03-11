@@ -1,0 +1,236 @@
+object Form1: TForm1
+  Left = 5
+  Height = 682
+  Top = 5
+  Width = 1000
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Исследование работы нейросети Хопфилда (Ионисян А.С., Шапошников А.В.)'
+  ClientHeight = 682
+  ClientWidth = 1000
+  OnCreate = FormCreate
+  LCLVersion = '1.8.4.0'
+  object BTN_learn: TButton
+    Left = 656
+    Height = 25
+    Top = 0
+    Width = 131
+    Caption = 'Обучить нейросеть'
+    OnClick = BTN_learnClick
+    TabOrder = 0
+  end
+  object EDIT_n: TEdit
+    Left = 128
+    Height = 29
+    Top = 0
+    Width = 32
+    TabOrder = 1
+    Text = '8'
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 19
+    Top = 0
+    Width = 108
+    Caption = 'Число нейронов'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 176
+    Height = 19
+    Top = 0
+    Width = 189
+    Caption = 'Число образов для обучения'
+    ParentColor = False
+  end
+  object EDIT_m: TEdit
+    Left = 368
+    Height = 29
+    Top = 0
+    Width = 32
+    TabOrder = 2
+    Text = '8'
+  end
+  object SG_images: TStringGrid
+    Left = 16
+    Height = 208
+    Top = 56
+    Width = 472
+    ColCount = 7
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    RowCount = 7
+    TabOrder = 3
+  end
+  object SG_w_cont: TStringGrid
+    Left = 16
+    Height = 208
+    Top = 288
+    Width = 472
+    ColCount = 7
+    RowCount = 7
+    TabOrder = 4
+  end
+  object BTN_clk: TButton
+    Left = 800
+    Height = 25
+    Top = 0
+    Width = 192
+    Caption = 'Шаг работы нейросети (0)'
+    OnClick = BTN_clkClick
+    TabOrder = 5
+  end
+  object Label3: TLabel
+    Left = 16
+    Height = 19
+    Top = 40
+    Width = 311
+    Caption = 'Образы-эталоны в памяти нейросети Хопфилда'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 16
+    Height = 19
+    Top = 272
+    Width = 401
+    Caption = 'Весовые коэффициенты нейросети Хопфилда (непрерывная)'
+    ParentColor = False
+  end
+  object SG_S_cont: TStringGrid
+    Left = 16
+    Height = 72
+    Top = 512
+    Width = 472
+    ColCount = 7
+    RowCount = 2
+    TabOrder = 6
+  end
+  object Label5: TLabel
+    Left = 16
+    Height = 19
+    Top = 496
+    Width = 355
+    Caption = 'Вектор состояния нейросети Хопфилда (непрерывная)'
+    ParentColor = False
+  end
+  object SG_y_cont: TStringGrid
+    Left = 16
+    Height = 72
+    Top = 608
+    Width = 472
+    ColCount = 7
+    RowCount = 2
+    TabOrder = 7
+  end
+  object Label6: TLabel
+    Left = 16
+    Height = 19
+    Top = 592
+    Width = 283
+    Caption = 'Выход нейросети Хопфилда (непрерывная)'
+    ParentColor = False
+  end
+  object SG_w_discrete: TStringGrid
+    Left = 496
+    Height = 208
+    Top = 288
+    Width = 472
+    ColCount = 7
+    RowCount = 7
+    TabOrder = 8
+  end
+  object Label7: TLabel
+    Left = 496
+    Height = 19
+    Top = 272
+    Width = 387
+    Caption = 'Весовые коэффициенты нейросети Хопфилда (дискретная)'
+    ParentColor = False
+  end
+  object SG_S_discrete: TStringGrid
+    Left = 496
+    Height = 72
+    Top = 512
+    Width = 472
+    ColCount = 7
+    RowCount = 2
+    TabOrder = 9
+  end
+  object Label8: TLabel
+    Left = 496
+    Height = 19
+    Top = 496
+    Width = 341
+    Caption = 'Вектор состояния нейросети Хопфилда (дискретная)'
+    ParentColor = False
+  end
+  object SG_y_discrete: TStringGrid
+    Left = 496
+    Height = 72
+    Top = 608
+    Width = 472
+    ColCount = 7
+    RowCount = 2
+    TabOrder = 10
+  end
+  object Label9: TLabel
+    Left = 496
+    Height = 19
+    Top = 592
+    Width = 269
+    Caption = 'Выход нейросети Хопфилда (дискретная)'
+    ParentColor = False
+  end
+  object SG_X0: TStringGrid
+    Left = 496
+    Height = 72
+    Top = 56
+    Width = 472
+    ColCount = 7
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    RowCount = 2
+    TabOrder = 11
+    OnEditingDone = SG_X0EditingDone
+  end
+  object Label10: TLabel
+    Left = 496
+    Height = 19
+    Top = 40
+    Width = 194
+    Caption = 'Входной неизвестный сигнал'
+    ParentColor = False
+  end
+  object BTN_random_images: TButton
+    Left = 408
+    Height = 25
+    Top = 0
+    Width = 240
+    Caption = 'Сгенерировать образы и обучить'
+    OnClick = BTN_random_imagesClick
+    TabOrder = 12
+  end
+  object BTN_random_X0: TButton
+    Left = 496
+    Height = 25
+    Top = 136
+    Width = 192
+    Caption = 'Случайный входной сигнал'
+    OnClick = BTN_random_X0Click
+    TabOrder = 13
+  end
+  object CB_tanh: TCheckBox
+    Left = 311
+    Height = 22
+    Top = 589
+    Width = 148
+    Caption = 'Активировать tanh'
+    TabOrder = 14
+  end
+  object CB_WTA: TCheckBox
+    Left = 788
+    Height = 22
+    Top = 589
+    Width = 147
+    Caption = 'Активировать WTA'
+    TabOrder = 15
+  end
+end
